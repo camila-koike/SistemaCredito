@@ -1,9 +1,8 @@
 class CreditService{
     consumeCredits(user, amount, plan){
         //Se user.isBlocked → lançar erro
-        if(user.isBlocked){
+        if(user.isBlocked)
             throw new Error("Usuário está bloqueado");
-        }
         //Se credits >= amount → consumir normalmente
         if(user.credits >= amount){
             user.credits = user.credits - amount;
@@ -14,9 +13,12 @@ class CreditService{
             //Se plano permite overage → deixar negativo até -100
             if(plan.overageAllowed){
                  user.credits = user.credits - amount;
-            }
-        }
-
+                 if(user.credits <= -100)
+                    user.isBlocked = true;
+                 return user;
+            }else
+                throw new Error("Saldo insuficiente");     
+        }   
     }
-
 }
+module.exports = CreditService;
