@@ -7,6 +7,9 @@ describe("CreditService", () => {
 
   beforeEach(() => {
     // Crie uma nova instância do serviço antes de cada teste
+    service = new CreditService();
+    user = {id: 1, credits: 50, isBlocked: false};
+    plan = {overageAllowed: true}
 
     // Defina um usuário padrão com:
     // id: 1
@@ -18,15 +21,16 @@ describe("CreditService", () => {
 
   test("deve consumir o crédito normalmente", () => {
     // Execute o método consumeCredits consumindo 20 créditos
-
+    service.consumeCredits(user, 20, plan)
     // Verifique se os créditos do usuário foram reduzidos corretamente
+    expect(user.credits).toBe(30);
   });
 
   test("deve permitir o limite negativo", () => {
     // Ajuste os créditos do usuário para um valor baixo (ex: 10)
-
+    user.credits = 10;
     // Consuma uma quantidade maior do que o saldo disponível
-
+    
     // Verifique se o saldo ficou negativo corretamente
   });
 
