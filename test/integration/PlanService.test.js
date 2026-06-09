@@ -1,4 +1,4 @@
-const PlanService = require("../../src/services/PlanService");
+//const PlanService = require("../../src/services/PlanService");
 
 describe("PlanService", () => {
   test("deve resetar o crédito e desbloquear o usuário", () => {

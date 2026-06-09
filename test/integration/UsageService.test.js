@@ -1,7 +1,7 @@
 const UsageService = require("../../src/services/UsageService");
 
 describe("UsageService", () => {
-  let creditServiceMock;
+  let mockServicoCredito;
   let service;
   let user;
   let plan;

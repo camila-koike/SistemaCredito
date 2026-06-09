@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push: # Executa quando houver push
+  pull_request: # Executa quando houver pull request
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest # Máquina Linux usada pelo GitHub
+
+    steps:
+      # Baixa o código do repositório
+      - uses: actions/checkout@v4
+
+      # Instala o Node.js
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Instala dependências
+      - run: npm ci
+
+      # Executa o ESLint
+      - run: npm run lint
+
+      # Executa os testes
+      - run: npm test
+
+      # não coloquei npm run build, porque o projeto não possui etapa de build, pois não está em tsc, já está em JS msm
