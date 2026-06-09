@@ -4,6 +4,7 @@ describe("CreditService", () => {
   let service;
   let user;
   let plan;
+  let u;
 
   beforeEach(() => {
     service = new CreditService();
